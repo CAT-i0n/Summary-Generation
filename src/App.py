@@ -2,13 +2,15 @@ import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter import filedialog
 from tkinter import ttk
+from .ml_method import MLMethod
 
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
         self.attributes('-type', 'splash')
         self.title('Editor')
-        self.geometry("800x600")
+        self.geometry("800x800")
+        self.ml_summarizer = MLMethod()
         self.__build()
 
     def __build(self):
@@ -29,12 +31,12 @@ class App(tk.Tk):
         self.method_box = ttk.Combobox(
             master = search_frame,
             state="readonly",
-            values=["Alphabetical", "Word frequency", "Neural network"]
+            values=["Key Words", "Key sentences", "ML extractor"]
         )
         self.method_box.pack(side=tk.LEFT)
-        self.method_box.set("Alphabetical")
+        self.method_box.set("ML extractor")
         
-        go_button = tk.Button(search_frame, text="Load", command=self.recognize_lang)
+        go_button = tk.Button(search_frame, text="Load", command=self.generate_summary)
         go_button.pack()
 
         # Text box to display output of main text.
@@ -42,9 +44,9 @@ class App(tk.Tk):
             width=100, height = 20,  borderwidth=2, relief="sunken", padx=20, font=("Helvetica", 15))
         self.text_box.pack()
 
-        self.lang_box = ScrolledText(
+        self.summary_box = ScrolledText(
             width=110, borderwidth=2, relief="sunken", padx=20, font=("Helvetica", 15))
-        self.lang_box.pack()
+        self.summary_box.pack()
 
         # Button to clear the text box display.
         clear_button = tk.Button(
@@ -52,21 +54,26 @@ class App(tk.Tk):
         clear_button.pack()
 
 
-    def recognize_lang(self):
+    def generate_summary(self):
         file = filedialog.askopenfilename()
         text = open(file).read()
         method = self.method_box.current()
+        match method:
+            case 2:
+                summary = self.ml_summarizer.generate_summary(text)
+        
+        self.print_to_textbox(text, summary)
 
 
-    def print_to_textbox(self, text, lang):
+
+
+    def print_to_textbox(self, text, summary):
         self.text_box.delete("1.0", tk.END)
-        self.lang_box.delete("1.0", tk.END)
+        self.summary_box.delete("1.0", tk.END)
+
         self.text_box.insert("end", text)
-        match lang:
-            case "rus":
-                self.lang_box.insert("end", "Язык текста - русский")
-            case "eng":
-                self.lang_box.insert("end", "Язык текста - английский")
+        self.summary_box.insert("end", summary)
+
 
     def open_help(self):
         top = tk.Toplevel()
