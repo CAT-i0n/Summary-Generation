@@ -1,0 +1,38 @@
+In discrete mathematics, and more specifically in graph theory, a graph is a structure amounting to a set of objects in which some pairs of the objects are in some sense "related".
+ The objects correspond to mathematical abstractions called vertices (also called nodes or points) and each of the related pairs of vertices is called an edge (also called link or line).
+ Typically, a graph is depicted in diagrammatic form as a set of dots or circles for the vertices, joined by lines or curves for the edges.
+ Graphs are one of the objects of study in discrete mathematics.
+
+The edges may be directed or undirected.
+ For example, if the vertices represent people at a party, and there is an edge between two people if they shake hands, then this graph is undirected because any person A can shake hands with a person B only if B also shakes hands with A.
+ In contrast, if an edge from a person A to a person B means that A owes money to B, then this graph is directed, because owing money is not necessarily reciprocated.
+
+Graphs are the basic subject studied by graph theory.
+ The word "graph" was first used in this sense by J.J. Sylvester in 1878 due to a direct relation between mathematics and chemical structure (what he called a chemico-graphical image).
+
+A graph (sometimes called an undirected graph to distinguish it from a directed graph, or a simple graph to distinguish it from a multigraph)45 is a pair G = (V, E), where V is a set whose elements are called vertices (singular: vertex), and E is a set of paired vertices, whose elements are called edges (sometimes links or lines).
+
+The vertices x and y of an edge {x, y} are called the endpoints of the edge.
+ The edge is said to join x and y and to be incident on x and y.
+ A vertex may belong to no edge, in which case it is not joined to any other vertex.
+
+A multigraph is a generalization that allows multiple edges to have the same pair of endpoints.
+ In some texts, multigraphs are simply called graphs.
+Sometimes, graphs are allowed to contain loops, which are edges that join a vertex to itself.
+ To allow loops, the pairs of vertices in E must be allowed to have the same node twice.
+ Such generalized graphs are called graphs with loops or simply graphs when it is clear from the context that loops are allowed.
+Generally, the set of vertices V is supposed to be finite; this implies that the set of edges is also finite.
+ Infinite graphs are sometimes considered, but are more often viewed as a special kind of binary relation, as most results on finite graphs do not extend to the infinite case, or need a rather different proof.
+An empty graph is a graph that has an empty set of vertices (and thus an empty set of edges).
+ The order of a graph is its number of vertices |V|.
+ The size of a graph is its number of edges |E|.
+ However, in some contexts, such as for expressing the computational complexity of algorithms, the size is |V| + |E| (otherwise, a non-empty graph could have size 0).
+ The degree or valency of a vertex is the number of edges that are incident to it; for graphs with loops, a loop is counted twice.
+In a graph of order n, the maximum degree of each vertex is n − 1 (or n + 1 if loops are allowed, because a loop contributes 2 to the degree), and the maximum number of edges is n(n − 1)/2 (or n(n + 1)/2 if loops are allowed).
+The edges of a graph define a symmetric relation on the vertices, called the adjacency relation.
+ Specifically, two vertices x and y are adjacent if {x, y} is an edge.
+ A graph may be fully specified by its adjacency matrix A, which is an n × n square matrix, with Aij specifying the number of connections from vertex i to vertex j.
+ For a simple graph, Aij is either 0, indicating disconnection, or 1, indicating connection; moreover Aii = 0 because an edge in a simple graph cannot start and end at the same vertex.
+ Graphs with self-loops will be characterized by some or all Aii being equal to a positive integer, and multigraphs (with multiple edges between vertices) will be characterized by some or all Aij being equal to a positive integer.
+ Undirected graphs will have a symmetric adjacency matrix (meaning Aij = Aji).
+
